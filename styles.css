@@ -1,0 +1,78 @@
+(() => {
+  const header = document.querySelector('.site-header');
+  const menuButton = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.main-nav');
+  const year = document.getElementById('year');
+  const cookieBanner = document.getElementById('cookie-banner');
+  const cookieAccept = document.getElementById('cookie-accept');
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+
+  if (year) year.textContent = new Date().getFullYear();
+
+  const updateHeader = () => {
+    header?.classList.toggle('scrolled', window.scrollY > 20);
+  };
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
+
+  const closeMenu = () => {
+    nav?.classList.remove('open');
+    menuButton?.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+  };
+
+  menuButton?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', String(Boolean(isOpen)));
+    document.body.classList.toggle('menu-open', Boolean(isOpen));
+  });
+
+  nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+
+  try {
+    if (localStorage.getItem('drachenwut-cookie-info') === 'accepted') {
+      cookieBanner?.classList.add('hidden');
+    }
+  } catch (_) {}
+
+  cookieAccept?.addEventListener('click', () => {
+    try { localStorage.setItem('drachenwut-cookie-info', 'accepted'); } catch (_) {}
+    cookieBanner?.classList.add('hidden');
+  });
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    status.className = 'form-status';
+
+    const data = new FormData(form);
+    const name = String(data.get('name') || '').trim();
+    const email = String(data.get('email') || '').trim();
+    const topic = String(data.get('topic') || 'Allgemeine Anfrage');
+    const message = String(data.get('message') || '').trim();
+
+    if (!name || !email || !message || !email.includes('@')) {
+      status.textContent = 'Bitte fülle Name, E-Mail und Nachricht vollständig aus.';
+      status.classList.add('error');
+      return;
+    }
+
+    const subject = encodeURIComponent(`Drachenwut – ${topic}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nE-Mail: ${email}\nThema: ${topic}\n\n${message}`
+    );
+    status.textContent = 'Dein E-Mail-Programm wird geöffnet …';
+    window.location.href = `mailto:info@drachenwut.de?subject=${subject}&body=${body}`;
+  });
+})();
