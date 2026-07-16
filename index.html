@@ -301,17 +301,70 @@
     .footer-bottom { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--border-light); padding-top: 21px; }
     .footer-bottom p { margin: 0; color: rgba(255,250,243,.37); font-size: .72rem; }
 
-    /* Animation */
+    /* Animation: light, smooth entrance without delaying interaction */
+    body {
+      opacity: 1;
+    }
+
+    .js body {
+      opacity: 0;
+      transition: opacity .52s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .js body.page-loaded {
+      opacity: 1;
+    }
+
+    .js .site-header {
+      opacity: 0;
+      transform: translateY(-8px);
+      transition:
+        opacity .46s cubic-bezier(.22, 1, .36, 1) .08s,
+        transform .46s cubic-bezier(.22, 1, .36, 1) .08s,
+        background .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .js body.page-loaded .site-header {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .reveal { opacity: 1; transform: none; }
-    .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
-    .js .reveal.visible { opacity: 1; transform: translateY(0); }
-    .delay-1 { transition-delay: .08s; }
-    .delay-2 { transition-delay: .16s; }
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition:
+        opacity .62s cubic-bezier(.22, 1, .36, 1),
+        transform .62s cubic-bezier(.22, 1, .36, 1);
+      will-change: opacity, transform;
+    }
+    .js .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+      will-change: auto;
+    }
+    .delay-1 { transition-delay: .07s; }
+    .delay-2 { transition-delay: .14s; }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
-      .reveal { opacity: 1; transform: none; }
+      .js body,
+      .js .site-header,
+      .reveal,
+      .js .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .js body { transition-duration: .42s; }
+      .js .reveal {
+        transform: translateY(10px);
+        transition-duration: .52s;
+      }
     }
 
     @media (max-width: 980px) {
@@ -1931,6 +1984,24 @@
       }
     }
 
+  
+
+    /* Restore the six original project motifs as vector icons, never emoji. */
+    .card-symbol.project-icon {
+      font-size: 0;
+      line-height: 1;
+    }
+
+    .card-symbol.project-icon svg {
+      width: 21px;
+      height: 21px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
   </style>
   <script type="application/ld+json">
   {
@@ -2019,7 +2090,7 @@
             <div class="project-image">
               <img src="images/Ideen1.png" data-file="Ideen1.png" alt="Drachenwut Festival – unabhängiges Musik- und Kulturfestival" loading="lazy" decoding="async">
             </div>
-            <div class="card-top"><span class="card-number">01</span><span class="card-symbol css-check" aria-hidden="true"></span></div>
+            <div class="card-top"><span class="card-number">01</span><span class="card-symbol project-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg></span></div>
             <div class="card-content">
               <p class="card-label">Musik & Kultur</p>
               <h3>Drachenwut Festival</h3>
@@ -2031,7 +2102,7 @@
             <div class="project-image">
               <img src="images/Ideen2.png" data-file="Ideen2.png" alt="Dragon Nights – mobiles Kulturformat" loading="lazy" decoding="async">
             </div>
-            <div class="card-top"><span class="card-number">02</span><span class="card-symbol css-check" aria-hidden="true"></span></div>
+            <div class="card-top"><span class="card-number">02</span><span class="card-symbol project-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg></span></div>
             <div class="card-content">
               <p class="card-label">Mobile Formate</p>
               <h3>Dragon Nights</h3>
@@ -2043,7 +2114,7 @@
             <div class="project-image">
               <img src="images/Ideen3.png" data-file="Ideen3.png" alt="Künstlerinnen- und Künstlerförderung" loading="lazy" decoding="async">
             </div>
-            <div class="card-top"><span class="card-number">03</span><span class="card-symbol css-check" aria-hidden="true"></span></div>
+            <div class="card-top"><span class="card-number">03</span><span class="card-symbol project-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z"/></svg></span></div>
             <div class="card-content">
               <p class="card-label">Direkte Förderung</p>
               <h3>Künstler:innenförderung</h3>
@@ -2055,7 +2126,7 @@
             <div class="project-image">
               <img src="images/Ideen4.png" data-file="Ideen4.png" alt="Barrierearmes und inklusives Kulturprojekt" loading="lazy" decoding="async">
             </div>
-            <div class="card-top"><span class="card-number">04</span><span class="card-symbol css-check" aria-hidden="true"></span></div>
+            <div class="card-top"><span class="card-number">04</span><span class="card-symbol project-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5"/></svg></span></div>
             <div class="card-content">
               <p class="card-label">Kultur für alle</p>
               <h3>Inklusionsprojekte</h3>
@@ -2067,7 +2138,7 @@
             <div class="project-image">
               <img src="images/Ideen5.png" data-file="Ideen5.png" alt="Workshops und Bildungsangebote" loading="lazy" decoding="async">
             </div>
-            <div class="card-top"><span class="card-number">05</span><span class="card-symbol css-check" aria-hidden="true"></span></div>
+            <div class="card-top"><span class="card-number">05</span><span class="card-symbol project-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 2.8 13.8 9l6.2 1.8-6.2 1.8L12 19l-1.8-6.4L4 10.8 10.2 9Z"/><path d="m18.5 16 .8 2.7 2.7.8-2.7.8-.8 2.7-.8-2.7-2.7-.8 2.7-.8Z"/></svg></span></div>
             <div class="card-content">
               <p class="card-label">Wissen teilen</p>
               <h3>Workshops & Bildung</h3>
@@ -2079,7 +2150,7 @@
             <div class="project-image">
               <img src="images/Ideen6.png" data-file="Ideen6.png" alt="Flammenwacht Netzwerk und freie Kulturprojekte" loading="lazy" decoding="async">
             </div>
-            <div class="card-top"><span class="card-number">06</span><span class="card-symbol css-check" aria-hidden="true"></span></div>
+            <div class="card-top"><span class="card-number">06</span><span class="card-symbol project-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6 4v4h2v3l-2 2v7h12v-7l-2-2V8h2V4h-3v3h-2V4h-2v3H9V4Z"/><path d="M9 20v-4h6v4"/></svg></span></div>
             <div class="card-content">
               <p class="card-label">Netzwerk & Schutzraum</p>
               <h3>Flammenwacht e. V.</h3>
@@ -2381,6 +2452,15 @@
         });
       }
 
+      const showPage = () => {
+        document.body.classList.add('page-loaded');
+      };
+
+      // Two frames allow the initial opacity state to render before fading in.
+      requestAnimationFrame(() => requestAnimationFrame(showPage));
+      window.addEventListener('pageshow', showPage);
+      window.setTimeout(showPage, 700);
+
       const reveals = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver(entries => {
@@ -2390,7 +2470,7 @@
               observer.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.12 });
+        }, { threshold: 0.08, rootMargin: '0px 0px -28px 0px' });
         reveals.forEach(element => observer.observe(element));
       } else {
         reveals.forEach(element => element.classList.add('visible'));
