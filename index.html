@@ -1832,6 +1832,105 @@
       .contact-grid { padding-top: 108vw; }
     }
 
+  
+
+    /* iPhone/Safari: icon shapes are drawn with CSS, not Unicode emoji. */
+    .card-symbol.css-check {
+      position: relative;
+      font-size: 0;
+      line-height: 1;
+    }
+
+    .card-symbol.css-check::before {
+      content: "";
+      width: 10px;
+      height: 18px;
+      border-right: 3px solid currentColor;
+      border-bottom: 3px solid currentColor;
+      transform: translateY(-2px) rotate(45deg);
+    }
+
+    .css-arrow {
+      position: relative;
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      flex: 0 0 15px;
+    }
+
+    .css-arrow::before {
+      content: "";
+      position: absolute;
+      top: 1px;
+      right: 1px;
+      width: 9px;
+      height: 9px;
+      border-top: 2px solid currentColor;
+      border-right: 2px solid currentColor;
+    }
+
+    .css-arrow::after {
+      content: "";
+      position: absolute;
+      left: 1px;
+      bottom: 2px;
+      width: 15px;
+      height: 2px;
+      background: currentColor;
+      transform: rotate(-45deg);
+      transform-origin: left center;
+      border-radius: 999px;
+    }
+
+
+    /* Complete iPhone/mobile menu fix: stable at every scroll position. */
+    .menu-button {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    @media (max-width: 760px) {
+      body.menu-open {
+        position: fixed;
+        left: 0;
+        right: 0;
+        width: 100%;
+        overflow: hidden;
+        overscroll-behavior: none;
+      }
+
+      body.menu-open .site-header {
+        background: #11100f;
+        box-shadow: none;
+      }
+
+      .menu-button {
+        min-width: 48px;
+        min-height: 48px;
+        padding: 0;
+      }
+
+      .nav-links {
+        inset: 0;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        min-height: 100svh;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        padding-top: max(104px, calc(env(safe-area-inset-top) + 82px));
+        padding-right: max(38px, env(safe-area-inset-right));
+        padding-bottom: max(38px, calc(env(safe-area-inset-bottom) + 24px));
+        padding-left: max(38px, env(safe-area-inset-left));
+      }
+
+      .nav-links a {
+        width: 100%;
+        min-height: 52px;
+      }
+    }
+
   </style>
   <script type="application/ld+json">
   {
@@ -1892,7 +1991,7 @@
             </span>
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#projekte">Projekte entdecken <span aria-hidden="true">↗</span></a>
+            <a class="button button-primary" href="#projekte">Projekte entdecken <span class="css-arrow" aria-hidden="true"></span></a>
             <a class="button button-secondary" href="#kontakt">Kontakt aufnehmen</a>
           </div>
           <div class="hero-points" aria-label="Schwerpunkte">
@@ -1920,7 +2019,7 @@
             <div class="project-image">
               <img src="images/Ideen1.png" data-file="Ideen1.png" alt="Drachenwut Festival – unabhängiges Musik- und Kulturfestival" loading="lazy" decoding="async">
             </div>
-            <div class="card-top"><span class="card-number">01</span><span class="card-symbol">♫</span></div>
+            <div class="card-top"><span class="card-number">01</span><span class="card-symbol css-check" aria-hidden="true"></span></div>
             <div class="card-content">
               <p class="card-label">Musik & Kultur</p>
               <h3>Drachenwut Festival</h3>
@@ -1932,7 +2031,7 @@
             <div class="project-image">
               <img src="images/Ideen2.png" data-file="Ideen2.png" alt="Dragon Nights – mobiles Kulturformat" loading="lazy" decoding="async">
             </div>
-            <div class="card-top"><span class="card-number">02</span><span class="card-symbol">☾</span></div>
+            <div class="card-top"><span class="card-number">02</span><span class="card-symbol css-check" aria-hidden="true"></span></div>
             <div class="card-content">
               <p class="card-label">Mobile Formate</p>
               <h3>Dragon Nights</h3>
@@ -1944,7 +2043,7 @@
             <div class="project-image">
               <img src="images/Ideen3.png" data-file="Ideen3.png" alt="Künstlerinnen- und Künstlerförderung" loading="lazy" decoding="async">
             </div>
-            <div class="card-top"><span class="card-number">03</span><span class="card-symbol">★</span></div>
+            <div class="card-top"><span class="card-number">03</span><span class="card-symbol css-check" aria-hidden="true"></span></div>
             <div class="card-content">
               <p class="card-label">Direkte Förderung</p>
               <h3>Künstler:innenförderung</h3>
@@ -1956,7 +2055,7 @@
             <div class="project-image">
               <img src="images/Ideen4.png" data-file="Ideen4.png" alt="Barrierearmes und inklusives Kulturprojekt" loading="lazy" decoding="async">
             </div>
-            <div class="card-top"><span class="card-number">04</span><span class="card-symbol">◎</span></div>
+            <div class="card-top"><span class="card-number">04</span><span class="card-symbol css-check" aria-hidden="true"></span></div>
             <div class="card-content">
               <p class="card-label">Kultur für alle</p>
               <h3>Inklusionsprojekte</h3>
@@ -1968,7 +2067,7 @@
             <div class="project-image">
               <img src="images/Ideen5.png" data-file="Ideen5.png" alt="Workshops und Bildungsangebote" loading="lazy" decoding="async">
             </div>
-            <div class="card-top"><span class="card-number">05</span><span class="card-symbol">✦</span></div>
+            <div class="card-top"><span class="card-number">05</span><span class="card-symbol css-check" aria-hidden="true"></span></div>
             <div class="card-content">
               <p class="card-label">Wissen teilen</p>
               <h3>Workshops & Bildung</h3>
@@ -1980,7 +2079,7 @@
             <div class="project-image">
               <img src="images/Ideen6.png" data-file="Ideen6.png" alt="Flammenwacht Netzwerk und freie Kulturprojekte" loading="lazy" decoding="async">
             </div>
-            <div class="card-top"><span class="card-number">06</span><span class="card-symbol">♜</span></div>
+            <div class="card-top"><span class="card-number">06</span><span class="card-symbol css-check" aria-hidden="true"></span></div>
             <div class="card-content">
               <p class="card-label">Netzwerk & Schutzraum</p>
               <h3>Flammenwacht e. V.</h3>
@@ -2045,7 +2144,7 @@
             Du möchtest auftreten, mitmachen, ein Projekt vorschlagen oder Drachenwut unterstützen?
             Schreib uns direkt per E-Mail.
           </p>
-          <a class="mail-link" href="mailto:info@drachenwut.de">info@drachenwut.de <span aria-hidden="true">↗</span></a>
+          <a class="mail-link" href="mailto:info@drachenwut.de">info@drachenwut.de <span class="css-arrow" aria-hidden="true"></span></a>
         </div>
 
         <form class="contact-form reveal delay-1" id="contact-form" novalidate aria-describedby="form-instructions form-note">
@@ -2065,7 +2164,7 @@
             </select>
           </label>
           <label for="contact-message"><span>Nachricht (Pflichtfeld)</span><textarea id="contact-message" name="message" placeholder="Worum geht es?" required aria-describedby="form-status"></textarea></label>
-          <button class="button button-primary" type="submit">E-Mail vorbereiten <span aria-hidden="true">↗</span></button>
+          <button class="button button-primary" type="submit">E-Mail vorbereiten <span class="css-arrow" aria-hidden="true"></span></button>
           <p class="form-note" id="form-note">Beim Absenden öffnet sich dein E-Mail-Programm. Diese Seite speichert keine Formulardaten.</p>
           <p class="form-status" id="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
         </form>
@@ -2158,6 +2257,7 @@
       window.addEventListener('scroll', updateHeader, { passive: true });
 
       let focusBeforeMenu = null;
+      let lockedScrollY = 0;
 
       const menuIsMobile = () => window.matchMedia('(max-width: 760px)').matches;
       const menuIsOpen = () => Boolean(navigation && navigation.classList.contains('open'));
@@ -2176,15 +2276,30 @@
         });
       };
 
+      const lockPageScroll = () => {
+        if (!menuIsMobile() || document.body.classList.contains('menu-open')) return;
+        lockedScrollY = window.scrollY || window.pageYOffset || 0;
+        document.body.style.top = `-${lockedScrollY}px`;
+        document.body.classList.add('menu-open');
+      };
+
+      const unlockPageScroll = () => {
+        if (!document.body.classList.contains('menu-open')) return;
+        document.body.classList.remove('menu-open');
+        document.body.style.top = '';
+        window.scrollTo(0, lockedScrollY);
+      };
+
       const closeMenu = ({ restoreFocus = true } = {}) => {
         if (!navigation || !menuButton) return;
+        const wasOpen = menuIsOpen();
         navigation.classList.remove('open');
         menuButton.setAttribute('aria-expanded', 'false');
         menuButton.setAttribute('aria-label', 'Menü öffnen');
-        document.body.classList.remove('menu-open');
+        if (wasOpen) unlockPageScroll();
         syncMenuAccessibility();
         if (restoreFocus && focusBeforeMenu instanceof HTMLElement) {
-          focusBeforeMenu.focus();
+          requestAnimationFrame(() => focusBeforeMenu.focus({ preventScroll: true }));
         }
       };
 
@@ -2199,25 +2314,34 @@
             syncMenuAccessibility();
             menuButton.setAttribute('aria-expanded', 'true');
             menuButton.setAttribute('aria-label', 'Menü schließen');
-            document.body.classList.add('menu-open');
-            requestAnimationFrame(() => menuFocusable()[0]?.focus());
+            lockPageScroll();
+            requestAnimationFrame(() => menuFocusable()[0]?.focus({ preventScroll: true }));
           } else {
             closeMenu();
           }
         });
 
         navigation.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', () => {
+          link.addEventListener('click', event => {
             const href = link.getAttribute('href') || '';
-            const target = href.startsWith('#') ? document.querySelector(href) : null;
-            closeMenu({ restoreFocus: false });
+            const target = href.startsWith('#') && href.length > 1
+              ? document.getElementById(decodeURIComponent(href.slice(1)))
+              : null;
+
             if (target instanceof HTMLElement) {
+              event.preventDefault();
+              closeMenu({ restoreFocus: false });
+              history.pushState(null, '', href);
               requestAnimationFrame(() => {
+                target.scrollIntoView({ block: 'start', behavior: 'auto' });
                 target.setAttribute('tabindex', '-1');
                 target.focus({ preventScroll: true });
                 target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
               });
+              return;
             }
+
+            closeMenu({ restoreFocus: false });
           });
         });
 
@@ -2248,6 +2372,11 @@
 
         window.addEventListener('resize', () => {
           if (!menuIsMobile()) closeMenu({ restoreFocus: false });
+          syncMenuAccessibility();
+        });
+
+        window.addEventListener('pageshow', () => {
+          closeMenu({ restoreFocus: false });
           syncMenuAccessibility();
         });
       }
