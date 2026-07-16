@@ -2002,6 +2002,39 @@
       stroke-linejoin: round;
     }
 
+
+
+    /* Mobile project images: always show all six artworks completely. */
+    @media (max-width: 760px) {
+      .projects .project-image {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: auto !important;
+        display: block;
+        overflow: hidden;
+        line-height: 0;
+        background: rgba(10, 9, 8, .92);
+      }
+
+      .projects .project-image img {
+        display: block;
+        width: 100%;
+        height: auto !important;
+        max-width: 100%;
+        max-height: none !important;
+        object-fit: contain !important;
+        object-position: center center;
+        transform: none !important;
+        background: rgba(10, 9, 8, .92);
+      }
+
+      .projects .project-card:hover .project-image img,
+      .projects .project-card:active .project-image img {
+        transform: none !important;
+      }
+    }
+
   </style>
   <script type="application/ld+json">
   {
