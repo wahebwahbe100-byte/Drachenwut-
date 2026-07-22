@@ -2566,7 +2566,33 @@
           }
 
           status.textContent = 'Anfrage wird gesendet …';
-          form.submit();
+
+          const submitButton = form.querySelector('button[type="submit"]');
+          if (submitButton instanceof HTMLButtonElement) submitButton.disabled = true;
+
+          fetch('https://formsubmit.co/ajax/f93e5db214@emailinbo.live', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json'
+            },
+            body: data
+          })
+            .then(response => {
+              if (!response.ok) throw new Error('Senden fehlgeschlagen');
+              return response.json();
+            })
+            .then(() => {
+              form.reset();
+              status.className = 'form-status';
+              status.textContent = 'تم الإرسال بنجاح.';
+            })
+            .catch(() => {
+              status.textContent = 'تعذر الإرسال. يرجى المحاولة مرة أخرى.';
+              status.classList.add('error');
+            })
+            .finally(() => {
+              if (submitButton instanceof HTMLButtonElement) submitButton.disabled = false;
+            });
         });
       }
     })();
