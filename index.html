@@ -2584,10 +2584,10 @@
             .then(() => {
               form.reset();
               status.className = 'form-status';
-              status.textContent = 'تم الإرسال بنجاح.';
+              status.textContent = 'Erfolgreich gesendet.';
             })
             .catch(() => {
-              status.textContent = 'تعذر الإرسال. يرجى المحاولة مرة أخرى.';
+              status.textContent = 'Senden fehlgeschlagen. Bitte versuche es erneut.';
               status.classList.add('error');
             })
             .finally(() => {
