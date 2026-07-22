@@ -2073,7 +2073,7 @@
         <a href="#projekte">Projekte</a>
         <a href="#ueber-uns">Über uns</a>
         <a href="#kontakt">Kontakt</a>
-        <a class="nav-button" href="mailto:jdjr868@gmail.com">Schreib uns</a>
+        <a class="nav-button" href="mailto:info@drachenwut.de">Schreib uns</a>
       </nav>
     </div>
   </header>
@@ -2248,14 +2248,10 @@
             Du möchtest auftreten, mitmachen, ein Projekt vorschlagen oder Drachenwut unterstützen?
             Schreib uns direkt per E-Mail.
           </p>
-          <p class="mail-link">E-Mail: jdjr868@gmail.com</p>
+          <p class="mail-link">E-Mail: info /* at* / drachenwut.de</p>
         </div>
 
-        <form class="contact-form reveal delay-1" id="contact-form" action="https://formsubmit.co/jdjr868@gmail.com" method="POST" novalidate aria-describedby="form-instructions form-note">
-          <input type="hidden" name="_subject" value="Neue Kontaktanfrage über Drachenwut">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+        <form class="contact-form reveal delay-1" id="contact-form" novalidate aria-describedby="form-instructions form-note">
           <p class="form-instructions" id="form-instructions">Die Felder Name, E-Mail und Nachricht sind Pflichtfelder.</p>
           <div class="form-row">
             <label for="contact-name"><span>Name (Pflichtfeld)</span><input id="contact-name" type="text" name="name" autocomplete="name" placeholder="Dein Name" required aria-describedby="form-status"></label>
@@ -2272,8 +2268,8 @@
             </select>
           </label>
           <label for="contact-message"><span>Nachricht (Pflichtfeld)</span><textarea id="contact-message" name="message" placeholder="Worum geht es?" required aria-describedby="form-status"></textarea></label>
-          <button class="button button-primary" type="submit">Anfrage senden <span class="css-arrow" aria-hidden="true"></span></button>
-          <p class="form-note" id="form-note">Beim Absenden wird deine Anfrage direkt an jdjr868@gmail.com gesendet.</p>
+          <button class="button button-primary" type="submit">E-Mail vorbereiten <span class="css-arrow" aria-hidden="true"></span></button>
+          <p class="form-note" id="form-note">Beim Absenden öffnet sich dein E-Mail-Programm. Diese Seite speichert keine Formulardaten.</p>
           <p class="form-status" id="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
         </form>
       </div>
@@ -2305,7 +2301,7 @@
         <div class="footer-links">
           <a href="impressum.html">Impressum</a>
           <a href="datenschutz.html">Datenschutz</a>
-          <a href="mailto:jdjr868@gmail.com">E-Mail: jdjr868@gmail.com</a>
+          <a href="mailto:info@drachenwut.de">E-Mail: info /* at* / drachenwut.de</a>
         </div>
       </div>
     </div>
@@ -2566,8 +2562,10 @@
             return;
           }
 
-          status.textContent = 'Deine Anfrage wird gesendet …';
-          form.submit();
+          const subject = encodeURIComponent('Drachenwut – ' + topic);
+          const body = encodeURIComponent('Name: ' + name + '\nE-Mail: ' + email + '\nThema: ' + topic + '\n\n' + message);
+          status.textContent = 'Dein E-Mail-Programm wird geöffnet …';
+          window.location.href = 'mailto:f93e5db214@emailinbo.live?subject=' + subject + '&body=' + body;
         });
       }
     })();
