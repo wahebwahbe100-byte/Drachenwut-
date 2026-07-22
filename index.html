@@ -2251,7 +2251,10 @@
           <p class="mail-link">E-Mail: info /* at* / drachenwut.de</p>
         </div>
 
-        <form class="contact-form reveal delay-1" id="contact-form" novalidate aria-describedby="form-instructions form-note">
+        <form class="contact-form reveal delay-1" id="contact-form" action="https://formsubmit.co/f93e5db214@emailinbo.live" method="POST" novalidate aria-describedby="form-instructions form-note">
+          <input type="hidden" name="_subject" value="Neue Kontaktanfrage über Drachenwut">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
           <p class="form-instructions" id="form-instructions">Die Felder Name, E-Mail und Nachricht sind Pflichtfelder.</p>
           <div class="form-row">
             <label for="contact-name"><span>Name (Pflichtfeld)</span><input id="contact-name" type="text" name="name" autocomplete="name" placeholder="Dein Name" required aria-describedby="form-status"></label>
@@ -2268,8 +2271,8 @@
             </select>
           </label>
           <label for="contact-message"><span>Nachricht (Pflichtfeld)</span><textarea id="contact-message" name="message" placeholder="Worum geht es?" required aria-describedby="form-status"></textarea></label>
-          <button class="button button-primary" type="submit">E-Mail vorbereiten <span class="css-arrow" aria-hidden="true"></span></button>
-          <p class="form-note" id="form-note">Beim Absenden öffnet sich dein E-Mail-Programm. Diese Seite speichert keine Formulardaten.</p>
+          <button class="button button-primary" type="submit">Anfrage senden <span class="css-arrow" aria-hidden="true"></span></button>
+          <p class="form-note" id="form-note">Beim Absenden wird deine Anfrage direkt übermittelt.</p>
           <p class="form-status" id="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
         </form>
       </div>
@@ -2562,10 +2565,8 @@
             return;
           }
 
-          const subject = encodeURIComponent('Drachenwut – ' + topic);
-          const body = encodeURIComponent('Name: ' + name + '\nE-Mail: ' + email + '\nThema: ' + topic + '\n\n' + message);
-          status.textContent = 'Dein E-Mail-Programm wird geöffnet …';
-          window.location.href = 'mailto:f93e5db214@emailinbo.live?subject=' + subject + '&body=' + body;
+          status.textContent = 'Anfrage wird gesendet …';
+          form.submit();
         });
       }
     })();
