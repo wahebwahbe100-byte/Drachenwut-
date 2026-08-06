@@ -2035,6 +2035,36 @@
       }
     }
 
+
+    /* Linked project cards */
+    .project-link {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .project-link:focus-visible {
+      outline: 3px solid var(--yellow);
+      outline-offset: 5px;
+    }
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 19px;
+      color: var(--yellow);
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .card-cta::after {
+      content: "→";
+      font-size: 1rem;
+      transition: transform .2s ease;
+    }
+    .project-link:hover .card-cta::after,
+    .project-link:focus-visible .card-cta::after { transform: translateX(4px); }
+
   </style>
   <script type="application/ld+json">
   {
@@ -2119,7 +2149,7 @@
         </div>
 
         <div class="project-grid">
-          <article class="project-card featured reveal">
+          <a class="project-card featured reveal project-link" href="projekt-drachenwut-festival.html" aria-label="Mehr über Drachenwut Festival erfahren">
             <div class="project-image">
               <img src="images/Ideen1.png" data-file="Ideen1.png" alt="Drachenwut Festival – unabhängiges Musik- und Kulturfestival" loading="lazy" decoding="async">
             </div>
@@ -2128,10 +2158,11 @@
               <p class="card-label">Musik & Kultur</p>
               <h3>Drachenwut Festival</h3>
               <p>Das unabhängige Musik- und Kulturfestival mit Haltung – jenseits der Mainstream-Ketten.</p>
+            <span class="card-cta">Mehr erfahren</span>
             </div>
-          </article>
+          </a>
 
-          <article class="project-card reveal delay-1">
+          <a class="project-card reveal delay-1 project-link" href="projekt-dragon-nights.html" aria-label="Mehr über Dragon Nights erfahren">
             <div class="project-image">
               <img src="images/Ideen2.png" data-file="Ideen2.png" alt="Dragon Nights – mobiles Kulturformat" loading="lazy" decoding="async">
             </div>
@@ -2140,10 +2171,11 @@
               <p class="card-label">Mobile Formate</p>
               <h3>Dragon Nights</h3>
               <p>Kleiner, flexibler und persönlicher – mobile Kulturformate für maximal 1.500 Gäste.</p>
+            <span class="card-cta">Mehr erfahren</span>
             </div>
-          </article>
+          </a>
 
-          <article class="project-card reveal delay-2">
+          <a class="project-card reveal delay-2 project-link" href="projekt-kuenstlerinnenfoerderung.html" aria-label="Mehr über Künstler:innenförderung erfahren">
             <div class="project-image">
               <img src="images/Ideen3.png" data-file="Ideen3.png" alt="Künstlerinnen- und Künstlerförderung" loading="lazy" decoding="async">
             </div>
@@ -2152,10 +2184,11 @@
               <p class="card-label">Direkte Förderung</p>
               <h3>Künstler:innenförderung</h3>
               <p>Unterstützung für freie Talente mit und vor allem ohne Agentur – direkt, ehrlich und solidarisch.</p>
+            <span class="card-cta">Mehr erfahren</span>
             </div>
-          </article>
+          </a>
 
-          <article class="project-card reveal">
+          <a class="project-card reveal project-link" href="projekt-inklusion.html" aria-label="Mehr über Inklusionsprojekte erfahren">
             <div class="project-image">
               <img src="images/Ideen4.png" data-file="Ideen4.png" alt="Barrierearmes und inklusives Kulturprojekt" loading="lazy" decoding="async">
             </div>
@@ -2164,10 +2197,11 @@
               <p class="card-label">Kultur für alle</p>
               <h3>Inklusionsprojekte</h3>
               <p>Barrierearme Kultur mit Gebärdensprache, Awareness-Team, Zugänglichkeit und weiteren Angeboten.</p>
+            <span class="card-cta">Mehr erfahren</span>
             </div>
-          </article>
+          </a>
 
-          <article class="project-card reveal delay-1">
+          <a class="project-card reveal delay-1 project-link" href="projekt-workshops-bildung.html" aria-label="Mehr über Workshops &amp; Bildung erfahren">
             <div class="project-image">
               <img src="images/Ideen5.png" data-file="Ideen5.png" alt="Workshops und Bildungsangebote" loading="lazy" decoding="async">
             </div>
@@ -2176,10 +2210,11 @@
               <p class="card-label">Wissen teilen</p>
               <h3>Workshops & Bildung</h3>
               <p>Hands-on-Formate für DIY-Musik, Technik, Veranstaltungsrecht und Community-Aufbau.</p>
+            <span class="card-cta">Mehr erfahren</span>
             </div>
-          </article>
+          </a>
 
-          <article class="project-card reveal delay-2">
+          <a class="project-card reveal delay-2 project-link" href="projekt-flammenwacht.html" aria-label="Mehr über Flammenwacht erfahren">
             <div class="project-image">
               <img src="images/Ideen6.png" data-file="Ideen6.png" alt="Flammenwacht Netzwerk und freie Kulturprojekte" loading="lazy" decoding="async">
             </div>
@@ -2188,8 +2223,9 @@
               <p class="card-label">Netzwerk & Schutzraum</p>
               <h3>Flammenwacht</h3>
               <p>Schutz, Vernetzung und Unterstützung für freie Kultur.</p>
+            <span class="card-cta">Mehr erfahren</span>
             </div>
-          </article>
+          </a>
         </div>
       </div>
 
