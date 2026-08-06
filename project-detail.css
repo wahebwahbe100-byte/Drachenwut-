@@ -131,6 +131,8 @@ h2 { margin: 15px 0 0; font-size: clamp(2.8rem, 5.2vw, 5.2rem); line-height: .93
 .related-card strong { display: block; margin-top: 8px; font-size: 1.35rem; line-height: 1.1; overflow-wrap: anywhere; }
 .related-arrow { position: absolute; right: 20px; bottom: 22px; width: 31px; height: 31px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; color: white; font-size: .95rem; transition: color .2s ease, border-color .2s ease, background .2s ease; }
 .related-card:hover .related-arrow { color: #171513; border-color: var(--yellow); background: var(--yellow); }
+.related-arrow svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .22s ease; }
+.related-card:hover .related-arrow svg { transform: translate(2px, -2px); }
 .site-footer { padding: 58px 0 26px; color: var(--white); background: #080706; }
 .footer-main { display: grid; grid-template-columns: 1.2fr .8fr .8fr; gap: 45px; padding-bottom: 40px; }
 .footer-copy { max-width: 350px; color: rgba(255,250,243,.48); }
